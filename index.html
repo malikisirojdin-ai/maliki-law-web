@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maliki Law Firm - Cloud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Maliki Law Firm</h1>
+        <p>Sistem Manajemen Perkara (Cloud Database)</p>
+    </header>
+
+    <section>
+        <h3>Input Perkara Baru</h3>
+        <div style="text-align: left; width: 90%; margin: 0 auto;">
+            <label>Nama Klien:</label><br>
+            <input type="text" id="namaKlien" placeholder="Contoh: Budi Santoso"><br><br>
+            
+            <label>Nomor Perkara:</label><br>
+            <input type="text" id="noPerkara" placeholder="Contoh: 123/Pdt.G/2026/PN Mtr"><br><br>
+            
+            <button id="btnSimpan">Simpan ke Cloud</button>
+        </div>
+    </section>
+
+    <table id="tabelPerkara">
+        <thead>
+            <tr>
+                <th>No. Perkara</th>
+                <th>Nama Klien</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="isiTabel"></tbody>
+    </table>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
