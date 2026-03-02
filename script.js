@@ -42,3 +42,31 @@ onSnapshot(koleksiPerkara, (snapshot) => {
         };
     });
 });
+// FUNGSI UNTUK BERTANYA KE GEMINI AI
+const btnTanyaAI = document.getElementById('btnTanyaAI');
+
+if (btnTanyaAI) {
+    btnTanyaAI.onclick = async () => {
+        const input = document.getElementById('inputAI').value;
+        const hasilDiv = document.getElementById('hasilAI');
+        const API_KEY_AI = AIzaSyDWAiDfzx2RWcL6m2-YioaVOx1wjbjJDaw; 
+
+        if (!input) return alert("Tuliskan sesuatu untuk dianalisis AI!");
+
+        hasilDiv.innerText = "Sedang berpikir...";
+
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY_AI}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: "Kamu adalah asisten ahli hukum. Bantu Maliki menganalisis atau menulis draf jurnal ini: " + input }] }]
+                })
+            });
+            const data = await response.json();
+            hasilDiv.innerText = data.candidates[0].content.parts[0].text;
+        } catch (e) {
+            hasilDiv.innerText = "Waduh, ada error: " + e.message;
+        }
+    };
+}
